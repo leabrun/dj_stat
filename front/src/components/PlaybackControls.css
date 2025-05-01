@@ -1,0 +1,58 @@
+.playback-controls {
+display: flex;
+justify-content: space-between;
+}
+.play-button, .pause-button, .stop-button {
+    flex: 1;
+    height: 46px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+.play-button svg, .pause-button svg, .stop-button svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+    transition: all 0.1s ease;
+}
+.play-button {
+    background-color: #00A93E;
+    border-top-left-radius: 3.55px;
+    border-bottom-left-radius: 3.55px;
+    border: 1.77px solid #000000;
+}
+.play-button.pressed {
+background-color: #2db82d;
+box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.play-button.pressed svg {
+    color: rgba(0, 0, 0, 0.5);
+}
+.pause-button {
+background-color: #FAB900;
+border-top: 1.77px solid #000000;
+border-bottom: 1.77px solid #000000;
+}
+.pause-button.pressed {
+background-color: #e6b800;
+box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.pause-button.pressed svg {
+    color: rgba(0, 0, 0, 0.5);
+}
+.stop-button {
+    background-color: #E7410C;
+    border-top-right-radius: 3.55px;
+    border-bottom-right-radius: 3.55px;
+    border: 1.77px solid #000000;
+}
+.stop-button.pressed {
+background-color: #e62e2e;
+box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.stop-button.pressed svg {
+    color: rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,95 @@
+.top-panel {
+    max-width: 408px;
+    height: 249px;
+    margin-bottom: 28px;
+    position: relative;
+}
+.lower-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3.56px solid #000000;
+    border-radius: 5.33px;
+
+}
+.cassette-container {
+    width: 100%;
+    height: 239px;
+    background-color: #D3D3D3;
+    border: 3.56px solid #000000;
+    border-radius: 5.33px;
+    box-shadow: 0px 22.22px 1.78px rgba(0, 0, 0, 0.15);
+}
+.cassette {
+    position: relative;
+    height: 200.89px;
+    max-width: 371px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 17.5px;
+    border: 3.55px solid #000000;
+    background-color: #EAB333;
+    box-shadow: 0px 6px 1.78px rgba(0, 0, 0, 0.15);
+}
+.cassette-middle {
+    height: 116.5px;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: #E7410C;
+    border-top: 3.55px solid #000000;
+    border-bottom: 3.55px solid #000000;
+    box-shadow: 0px 3.5px #9B2600;
+}
+.tape-controls {
+    max-width: 313px;
+    height: 88px;
+    margin: auto;
+    margin-top: 12px;
+    border: 3.55px solid #000000;
+    border-radius: 48.12px;
+    background: linear-gradient(to right, #464140, #312E2D);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.window {
+    width: 82.72px;
+    height: 35px;
+    border-radius: 3.28px;
+    border: 1.77px solid #000000;
+}
+.label-window {
+    max-width: 61.24px;
+    height: 100%;
+    border-top-right-radius: 3px;
+    border-end-end-radius: 3px;
+    background-color: #534A43;
+}
+.pencil-thingy {
+    width: 64.52px;
+    height: 64.52px;
+    border-radius: 50%;
+    border: 1.77px solid #000000;
+    margin: 0 20px;
+    display: flex;
+}
+.pencil-thingy .gear {
+    max-width: 48px;
+    height: 49px;
+    margin: auto;
+}
+.lines {
+    height: 195px;
+    width: 100%;
+    position: absolute;
+}
+.hatch-line {
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.25);
+}

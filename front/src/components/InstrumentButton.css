@@ -1,0 +1,67 @@
+.button-row {
+    display: flex;
+    margin-bottom: 11px;
+    height: 80px;
+}
+.instrument-button-container {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.back-instrument-button {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #939393;
+    border: 1.77px solid #000000;
+    box-shadow: 0px 4.43px 1.77px rgba(0, 0, 0, 0.45);
+    transition: all 0.1s ease;
+}
+.instrument-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E7E6E6;
+    border: 1.77px solid #000000;
+    transition: all 0.1s ease;
+    cursor: pointer;
+}
+.instrument-button-container.pressed .back-instrument-button {
+    box-shadow: none;
+}
+.instrument-button-container.pressed .instrument-button {
+    background-color: #C2C2C2;
+    transform: translateY(10px);
+}
+.instrument-button-container:first-child  .back-instrument-button{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.instrument-button-container:last-child  .back-instrument-button{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.instrument-button-container:first-child  .instrument-button{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.instrument-button-container:last-child  .instrument-button{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.instrument-icon {
+    width: 37px;
+    height: 37px;
+    color: #373737;
+}
+.instrument-icon svg {
+        width: 100%;
+        height: 100%;
+}

@@ -1,0 +1,25 @@
+.volume-container {
+    display: flex;
+    align-items: center;
+    width: 295px;
+    height: 32px;
+    margin: auto;
+    margin-bottom: 13px;
+}
+/* .volume-slider {
+    flex-grow: 1;
+    margin-right: 17px;
+    height: 3px;
+    border-radius: 4.5px;
+    background: #939393;
+    appearance: none;
+    background: transparent;
+} */
+.volume-icon {
+    width: 31px;
+    height: 24.11px;
+}
+.volume-icon svg {
+    width: 100%;
+    height: 100%;
+}
