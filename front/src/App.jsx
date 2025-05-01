@@ -6,7 +6,6 @@ import InstrumentButtonGroup from './components/InstrumentButton';
 import RecordButton from './components/RecordButton';
 import VolumeControl from './components/VolumeControl';
 import PlaybackControls from './components/PlaybackControls';
-import RecordingControls from './components/RecordingControls';
 
 import { useTelegramFullscreen } from './InitTelegram';
 import { DJConsoleProvider } from './DJConsoleContext';
@@ -70,7 +69,6 @@ function App() {
             
             {/* Playback controls */}
             <PlaybackControls />
-            <RecordingControls />
           </div>
         </div>
       </div>

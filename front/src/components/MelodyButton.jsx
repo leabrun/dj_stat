@@ -1,7 +1,7 @@
 import React, { useState }  from 'react';
 import { useEffect } from 'react';
 import './MelodyButton.css';
-import useSound from '../useSound';
+import useSound from '../UseSoundHook';
 
 import { useDJConsole } from '../DJConsoleContext';
 
@@ -61,22 +61,15 @@ const MelodyButton = ({ key, isActive, soundUrl, onClick }) => {
         </svg>
     )
   
-  const { play, stop } = useSound(soundUrl, key);
-  const [wasActive, setWasActive] = useState(isActive);
+  const { play, stop } = useSound(soundUrl, {loop: true});
   
   useEffect(() => {
-    if (isActive && !wasActive) {
-      const timer = setTimeout(() => {
-        play();
-      }, 50);
-      
-      setWasActive(true);
-      return () => clearTimeout(timer);
-    } else if (!isActive && wasActive) {
-      stop();
-      setWasActive(false);
-    }
-  }, [isActive, wasActive, play, stop]);
+          if (isActive) {
+          play();
+          } else {
+          stop();
+          }
+    }, [isActive, play, stop]);
 
     return (
         <div 

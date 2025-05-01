@@ -66,10 +66,6 @@ export const DJConsoleProvider = ({ children }) => {
         alert("Warning: No active sounds. Recording will be silent.");
       }
       
-      // Set up audio context and destination
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const destination = audioContext.createMediaStreamDestination();
-      
       // Create audio stream from the current audio output
       const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
       recordingStreamRef.current = audioStream;

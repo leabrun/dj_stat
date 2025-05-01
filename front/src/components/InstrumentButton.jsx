@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import './InstrumentButton.css';
-import useSound from '../useSound';
+import useSound from '../UseSoundHook';
 
 import { useDJConsole } from '../DJConsoleContext';
 
@@ -186,7 +186,7 @@ const InstrumentButtonGroup = ({ type }) => {
 
 
 const InstrumentButton = ({ type, isActive, onClick }) => {
-    const { play, stop } = useSound(type.url);
+    const { play, stop } = useSound(type.url, {loop: true});
   
     useEffect(() => {
         if (isActive) {
