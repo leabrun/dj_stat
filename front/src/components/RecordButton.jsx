@@ -1,34 +1,12 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React from 'react';
 import './RecordButton.css';
 
-import { useDJConsole } from '../DJConsoleContext';
 
-const RecordButton = () => {
-    const [activeButton, setActiveButton] = useState(null);
-    const { resetTrigger } = useDJConsole();
-
-    const handleClick = () => {
-        const newState = !activeButton;
-        setActiveButton(newState);
-
-        if (newState) {
-          console.log('ВКЛ');
-        } else {
-          console.log('ВЫКЛ');
-        }
-    };
-
-    useEffect(() => {
-    if (resetTrigger > 0) {
-        setActiveButton(null);
-    }
-    }, [resetTrigger]);
-
+const RecordButton = ({ isRecording, onToggleRecording }) => {
     return (
         <div
-            className={`record-button-container ${activeButton ? 'pressed' : ''}`}
-            onClick={handleClick}
+            className={`record-button-container ${isRecording ? 'pressed' : ''}`}
+            onClick={onToggleRecording}
         >
             <div className="back-record-button"></div>
             <button className="record-button">

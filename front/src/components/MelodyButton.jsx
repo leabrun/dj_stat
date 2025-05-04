@@ -1,43 +1,22 @@
-import React, { useState }  from 'react';
-import { useEffect } from 'react';
+import React from 'react';
 import './MelodyButton.css';
-import useSound from '../UseSoundHook';
-
-import { useDJConsole } from '../DJConsoleContext';
 
 
-const MelodyButtonGroup = () => {
-    const [activeButton, setActiveButton] = useState(null);
-    const { resetTrigger } = useDJConsole();
-
-    const buttons = [
-      { id: 'mldbtn1', url: '/sounds/melodies/4.wav' },
-      { id: 'mldbtn2', url: '/sounds/melodies/5.wav' },
-      { id: 'mldbtn3', url: '/sounds/melodies/6.wav' }
+const MelodyButtonGroup = ({ onSoundToggle, activeSound }) => {
+    const melodies = [
+      { id: 'mldbtn1', url: '/sounds/melodies/4.wav', category: 'melodies' },
+      { id: 'mldbtn2', url: '/sounds/melodies/5.wav', category: 'melodies' },
+      { id: 'mldbtn3', url: '/sounds/melodies/6.wav', category: 'melodies' }
     ];
-
-    const handleButtonClick = (buttonId) => {
-      if (activeButton === buttonId) {
-        setActiveButton(null);
-      } else {
-        setActiveButton(buttonId);
-      }
-    };
-
-    useEffect(() => {
-      if (resetTrigger > 0) {
-        setActiveButton(null);
-      }
-    }, [resetTrigger]);
 
     return (
       <div className="melody-row">
-        {buttons.map(button => (
+        {melodies.map(melody => (
           <MelodyButton
-            key={button.id}
-            soundUrl={button.url}
-            isActive={activeButton === button.id}
-            onClick={() => handleButtonClick(button.id)}
+            key={melody.id}
+            soundUrl={melody.url}
+            isActive={activeSound?.id === melody.id}
+            onClick={() => onSoundToggle(melody)}
         />
     ))}
     </div>
@@ -46,7 +25,6 @@ const MelodyButtonGroup = () => {
 
 
 const MelodyButton = ({ key, isActive, soundUrl, onClick }) => {
-  const { play, stop } = useSound(soundUrl);
   const pic = (
         <svg 
             width="12" 
@@ -61,14 +39,6 @@ const MelodyButton = ({ key, isActive, soundUrl, onClick }) => {
             />
         </svg>
     )
-
-  useEffect(() => {
-          if (isActive) {
-          play();
-          } else {
-          stop();
-          }
-    }, [isActive, play, stop]);
 
     return (
         <div 
