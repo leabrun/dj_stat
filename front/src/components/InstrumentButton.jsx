@@ -153,13 +153,8 @@ const sounds = {
 const InstrumentButtonGroup = ({ type }) => {
     const [activeButton, setActiveButton] = useState(null);
     const { resetTrigger } = useDJConsole();
+    const currentType = sounds[type]
 
-    useEffect(() => {
-        if (resetTrigger > 0) {
-        setActiveButton(null);
-        }
-    }, [resetTrigger]);
-  
     const handleButtonClick = (buttonId) => {
         if (activeButton === buttonId) {
             setActiveButton(null);
@@ -168,7 +163,11 @@ const InstrumentButtonGroup = ({ type }) => {
         }
     };
 
-    const currentType = sounds[type]
+    useEffect(() => {
+        if (resetTrigger > 0) {
+        setActiveButton(null);
+        }
+    }, [resetTrigger]);
   
     return (
       <div className="button-row">
@@ -186,7 +185,7 @@ const InstrumentButtonGroup = ({ type }) => {
 
 
 const InstrumentButton = ({ type, isActive, onClick }) => {
-    const { play, stop } = useSound(type.url, {loop: true});
+    const { play, stop } = useSound(type.url);
   
     useEffect(() => {
         if (isActive) {

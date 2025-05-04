@@ -6,13 +6,14 @@ import { useDJConsole } from '../DJConsoleContext';
 
 const PlaybackControls = () => {
     const [activeButton, setActiveButton] = useState(null);
+    const { resetAllButtons } = useDJConsole();
+    
     const handleButtonPress = (button) => {
         setActiveButton(button);
     };
     const handleButtonRelease = () => {
         setActiveButton(null);
     };
-    const { resetAllButtons } = useDJConsole();
 
     return (
         <div className="playback-controls">

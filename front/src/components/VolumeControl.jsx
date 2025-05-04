@@ -5,9 +5,7 @@ import { useDJConsole } from '../DJConsoleContext';
 import './VolumeControl.css';
 
 const VolumeControl = () => {
-  // Use the DJ console context
   const { volume, updateVolume } = useDJConsole();
-  // Convert volume from 0-1 scale to 1-100 scale for the slider
   const sliderValue = volume * 100;
 
     const CustomSlider = styled(Slider)({

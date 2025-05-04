@@ -1,16 +1,14 @@
 import { useRef, useEffect, useCallback } from 'react';
 import { useDJConsole } from './DJConsoleContext';
 
-const useSound = (soundUrl, soundId) => {
+const useSound = (soundUrl) => {
   const audioRef = useRef(null);
   const isPlayingRef = useRef(false);
   const playPromiseRef = useRef(null);
   
-  // Get context values
-  const { volume, registerSound, unregisterSound } = useDJConsole();
+  const { volume } = useDJConsole();
 
   useEffect(() => {
-    // Create audio element if it doesn't exist
     if (!audioRef.current) {
       audioRef.current = new Audio(soundUrl);
       audioRef.current.loop = true;
@@ -18,14 +16,12 @@ const useSound = (soundUrl, soundId) => {
       audioRef.current.volume = volume;
     }
 
-    // Cleanup on unmount
     return () => {
       stop();
       audioRef.current = null;
     };
   }, [soundUrl]);
-  
-  // Update volume when it changes in context
+
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = volume;
@@ -40,29 +36,22 @@ const useSound = (soundUrl, soundId) => {
             audioRef.current.pause();
             audioRef.current.currentTime = 0;
             isPlayingRef.current = false;
-            // Unregister sound when stopped
-            unregisterSound(soundId);
           })
           .catch(() => {
             isPlayingRef.current = false;
-            unregisterSound(soundId);
           });
       } else {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
         isPlayingRef.current = false;
-        // Unregister sound when stopped
-        unregisterSound(soundId);
       }
     }
-  }, [soundId, unregisterSound]);
+  }, []);
 
   const play = useCallback(() => {
     if (!isPlayingRef.current && audioRef.current) {
-      // Ensure the latest volume is set
-      audioRef.current.volume = volume;
+      audioRef.current.volume = volume; 
       
-      // Store the play promise
       const playPromise = audioRef.current.play();
       if (playPromise !== undefined) {
         playPromiseRef.current = playPromise;
@@ -70,9 +59,6 @@ const useSound = (soundUrl, soundId) => {
         playPromise
           .then(() => {
             isPlayingRef.current = true;
-            // Register sound as active
-            registerSound(soundId);
-            
             if (playPromiseRef.current === playPromise) {
               playPromiseRef.current = null;
             }
@@ -86,11 +72,9 @@ const useSound = (soundUrl, soundId) => {
           });
       } else {
         isPlayingRef.current = true;
-        // Register sound as active
-        registerSound(soundId);
       }
     }
-  }, [volume, soundId, registerSound]);
+  }, [volume]); 
 
   return { 
     play, 

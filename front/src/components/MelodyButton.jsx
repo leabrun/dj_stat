@@ -10,18 +10,12 @@ const MelodyButtonGroup = () => {
     const [activeButton, setActiveButton] = useState(null);
     const { resetTrigger } = useDJConsole();
 
-    useEffect(() => {
-      if (resetTrigger > 0) {
-        setActiveButton(null);
-      }
-    }, [resetTrigger]);
-
     const buttons = [
       { id: 'mldbtn1', url: '/sounds/melodies/4.wav' },
       { id: 'mldbtn2', url: '/sounds/melodies/5.wav' },
       { id: 'mldbtn3', url: '/sounds/melodies/6.wav' }
     ];
-  
+
     const handleButtonClick = (buttonId) => {
       if (activeButton === buttonId) {
         setActiveButton(null);
@@ -29,6 +23,12 @@ const MelodyButtonGroup = () => {
         setActiveButton(buttonId);
       }
     };
+
+    useEffect(() => {
+      if (resetTrigger > 0) {
+        setActiveButton(null);
+      }
+    }, [resetTrigger]);
 
     return (
       <div className="melody-row">
@@ -46,6 +46,7 @@ const MelodyButtonGroup = () => {
 
 
 const MelodyButton = ({ key, isActive, soundUrl, onClick }) => {
+  const { play, stop } = useSound(soundUrl);
   const pic = (
         <svg 
             width="12" 
@@ -60,9 +61,7 @@ const MelodyButton = ({ key, isActive, soundUrl, onClick }) => {
             />
         </svg>
     )
-  
-  const { play, stop } = useSound(soundUrl, {loop: true});
-  
+
   useEffect(() => {
           if (isActive) {
           play();

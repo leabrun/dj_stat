@@ -6,6 +6,8 @@ import { useDJConsole } from '../DJConsoleContext';
 
 const RecordButton = () => {
     const [activeButton, setActiveButton] = useState(null);
+    const { resetTrigger } = useDJConsole();
+
     const handleClick = () => {
         const newState = !activeButton;
         setActiveButton(newState);
@@ -16,8 +18,6 @@ const RecordButton = () => {
           console.log('ВЫКЛ');
         }
     };
-
-    const { resetTrigger } = useDJConsole();
 
     useEffect(() => {
     if (resetTrigger > 0) {
